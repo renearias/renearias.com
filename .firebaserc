@@ -1,5 +1,15 @@
 {
   "projects": {
     "default": "renearias-42f8b"
-  }
+  },
+  "targets": {
+    "renearias-42f8b": {
+      "hosting": {
+        "api": [
+          "renearias-42f8b"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

@@ -5,6 +5,9 @@ module.exports = {
   output: {
     path: join(__dirname, '../../dist/apps/api'),
     clean: true,
+    ...(process.env.FIREBASE_BUILD && {
+      library: { type: 'commonjs2' },
+    }),
     ...(process.env.NODE_ENV !== 'production' && {
       devtoolModuleFilenameTemplate: '[absolute-resource-path]',
     }),

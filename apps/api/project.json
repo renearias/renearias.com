@@ -14,6 +14,12 @@
       "configurations": {
         "development": {
           "args": ["--node-env=development"]
+        },
+        "firebase": {
+          "args": ["--node-env=production"],
+          "env": {
+            "FIREBASE_BUILD": "true"
+          }
         }
       }
     },

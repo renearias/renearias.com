@@ -3,7 +3,8 @@
     "source": "dist/apps/api",
     "runtime": "nodejs22",
     "ignore": [
-      "*.map"
+      "*.map",
+      "node_modules"
     ]
   },
   "hosting": [
