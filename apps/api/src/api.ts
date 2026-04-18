@@ -4,15 +4,21 @@ import { ValidationPipe } from '@nestjs/common';
 import express, { Express } from 'express';
 import { AppModule } from './app/app.module';
 
-export const server: Express = express();
+// @nestjs/platform-express calls the deprecated Express 3.x `app.router` getter which
+// throws in Express 4.x. Patch the method to use `_router` instead.
+(ExpressAdapter.prototype as any).isMiddlewareApplied = function (name: string) {
+  const app = this.getInstance();
+  return (
+    !!app._router &&
+    !!app._router.stack &&
+    typeof app._router.stack.filter === 'function' &&
+    app._router.stack.some(
+      (layer: any) => layer?.handle?.name === name,
+    )
+  );
+};
 
-// @nestjs/platform-express uses the deprecated Express 3.x `app.router` getter
-// which throws in Express 4.x. Override it to return the internal `_router` instead.
-Object.defineProperty(server, 'router', {
-  get: () => (server as any)._router,
-  configurable: true,
-  enumerable: false,
-});
+export const server: Express = express();
 
 export async function createFunction(expressInstance: Express): Promise<Express> {
   const app = await NestFactory.create(
