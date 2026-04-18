@@ -6,3 +6,5 @@ env:
     secret: API_URL
     availability:
       - BUILD
+  - variable: API_URL
+    secret: API_URL
