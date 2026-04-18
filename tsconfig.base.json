@@ -1,0 +1,30 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "bundler",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "types": ["libs/shared/types/src/index.ts"],
+      "utils": ["libs/shared/utils/src/index.ts"],
+      "content": ["libs/shared/content/src/index.ts"],
+      "api-contracts": ["libs/shared/api-contracts/src/index.ts"],
+      "ui": ["libs/ui/src/index.ts"],
+      "home": ["libs/features/home/src/index.ts"],
+      "engineering": ["libs/features/engineering/src/index.ts"],
+      "music": ["libs/features/music/src/index.ts"],
+      "writing": ["libs/features/writing/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}
