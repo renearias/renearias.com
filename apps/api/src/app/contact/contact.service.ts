@@ -18,6 +18,12 @@ export class ContactService {
         pass: this.config.get<string>('SMTP_PASS'),
       },
     });
+
+    this.transporter.verify().then(() => {
+      this.logger.log('SMTP connection verified successfully');
+    }).catch((err) => {
+      this.logger.error('SMTP connection failed — emails will NOT be delivered', err);
+    });
   }
 
   async create(dto: CreateContactDto) {
