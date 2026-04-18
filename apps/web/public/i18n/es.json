@@ -1,0 +1,100 @@
+{
+  "app": {
+    "title": "René Arias"
+  },
+  "nav": {
+    "engineering": "Ingeniería",
+    "music": "Música",
+    "writing": "Escritura",
+    "lab": "Lab",
+    "contact": "Contacto"
+  },
+  "home": {
+    "eyebrow": "Ingeniero de Software · Artista Musical",
+    "tagline": "Construyo software que escala y música que resuena. Aquí es donde ambos mundos se encuentran.",
+    "cta_work": "Ver Mi Trabajo",
+    "cta_music": "Escuchar Mi Música",
+    "scroll": "Bajar",
+    "manifesto_label": "Manifiesto",
+    "manifesto_quote": "\"Precisión en el código, emoción en la música — ambas exigen el mismo rigor y la misma alma.\"",
+    "engineering_label": "Ingeniería",
+    "featured_work": "Trabajo Destacado",
+    "view_all": "Ver Todo →",
+    "music_label": "Música",
+    "latest_releases": "Últimos Lanzamientos",
+    "discography": "Discografía →",
+    "writing_label": "Escritura",
+    "recent_articles": "Artículos Recientes",
+    "all_articles": "Todos los Artículos →",
+    "cta_build": "Construyamos Algo",
+    "cta_build_sub": "Ya sea un proyecto de software o una colaboración musical, siempre estoy abierto a conversaciones interesantes."
+  },
+  "engineering": {
+    "label": "Ingeniería",
+    "heading": "Construyendo Cosas",
+    "subheading": "Sistemas escalables, herramientas open source y el ocasional experimento que escapa a producción.",
+    "case_studies": "Casos de Estudio",
+    "challenge": "Desafío",
+    "solution": "Solución",
+    "impact": "Impacto",
+    "projects": "Proyectos"
+  },
+  "music": {
+    "label": "Discografía",
+    "artist_tagline": "Cantautor ecuatoriano · Disponible en múltiples plataformas"
+  },
+  "writing": {
+    "label": "Escritura",
+    "heading": "Artículos",
+    "subheading": "Reflexiones sobre ingeniería, música, creatividad y la intersección entre ellas.",
+    "all": "Todos"
+  },
+  "lab": {
+    "label": "Lab",
+    "heading": "Experimentos",
+    "subheading": "Proyectos secundarios, prototipos e ideas que escaparon al mundo."
+  },
+  "contact": {
+    "label": "Contacto",
+    "heading": "Hola",
+    "subheading": "Para oportunidades de ingeniería, colaboraciones musicales, o cualquier otra cosa.",
+    "name": "Nombre",
+    "email": "Correo",
+    "subject": "Asunto",
+    "message": "Mensaje",
+    "name_placeholder": "Tu nombre",
+    "email_placeholder": "tu@correo.com",
+    "select_topic": "Selecciona un tema",
+    "topic_engineering": "Oportunidad de Ingeniería",
+    "topic_music": "Colaboración Musical",
+    "topic_consulting": "Consultoría",
+    "topic_general": "General",
+    "message_placeholder": "Cuéntame qué estás pensando...",
+    "send": "Enviar Mensaje",
+    "sent_heading": "Mensaje Enviado",
+    "sent_body": "Te responderé en unos días.",
+    "or_reach_out": "O contáctame directamente",
+    "error_name": "El nombre es requerido",
+    "error_email": "Se requiere un correo válido",
+    "error_message": "El mensaje es requerido"
+  },
+  "about": {
+    "label": "Acerca de",
+    "bio_1": "Soy un ingeniero de software con una década de experiencia construyendo sistemas escalables, y un artista musical que ha estado grabando discos desde adolescente.",
+    "bio_2": "Creo que las disciplinas se parecen más de lo que difieren — ambas requieren enfoque profundo, refinamiento iterativo y la voluntad de descartar lo que no funciona.",
+    "bio_3": "Actualmente construyendo herramientas para desarrolladores de día y grabando música de noche, en algún lugar entre el café y los sintetizadores.",
+    "engineering_skills": "Ingeniería",
+    "music_skills": "Música",
+    "timeline": "Cronología",
+    "get_in_touch": "Ponerse en Contacto"
+  },
+  "footer": {
+    "tagline": "Ingeniero de software y artista musical. Construyendo software reflexivo y música honesta.",
+    "work": "Trabajo",
+    "music": "Música",
+    "connect": "Conectar",
+    "releases": "Lanzamientos",
+    "copyright": "© 2024 René Arias. Todos los derechos reservados.",
+    "built_with": "Construido con Angular, NestJS y Nx"
+  }
+}

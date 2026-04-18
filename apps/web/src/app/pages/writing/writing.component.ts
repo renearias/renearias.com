@@ -1,15 +1,16 @@
 import { Component, signal, computed } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-writing',
   standalone: true,
-  imports: [],
+  imports: [TranslatePipe],
   template: `
     <div class="pt-24 pb-20 px-6">
       <div class="max-w-6xl mx-auto">
-        <p class="text-[#888888] text-sm uppercase tracking-[0.3em] mb-6">Writing</p>
-        <h1 class="font-display text-6xl font-bold text-[#e8e8e8] mb-4">Articles</h1>
-        <p class="text-[#888888] text-xl max-w-2xl mb-12">Thoughts on engineering, music, creativity, and the overlap between them.</p>
+        <p class="text-[#888888] text-sm uppercase tracking-[0.3em] mb-6">{{ 'writing.label' | translate }}</p>
+        <h1 class="font-display text-6xl font-bold text-[#e8e8e8] mb-4">{{ 'writing.heading' | translate }}</h1>
+        <p class="text-[#888888] text-xl max-w-2xl mb-12">{{ 'writing.subheading' | translate }}</p>
 
         <div class="flex flex-wrap gap-3 mb-12">
           <button 
@@ -18,7 +19,7 @@ import { Component, signal, computed } from '@angular/core';
             [style.color]="activeTag() === null ? '#0a0a0a' : '#888888'"
             [style.border]="activeTag() !== null ? '1px solid #1f1f1f' : 'none'"
             class="px-4 py-2 text-xs uppercase tracking-wider transition-colors">
-            All
+            {{ 'writing.all' | translate }}
           </button>
           @for (tag of allTags; track tag) {
             <button 

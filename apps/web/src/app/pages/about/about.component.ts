@@ -1,34 +1,32 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, TranslatePipe],
   template: `
     <div class="pt-24 pb-20 px-6">
       <div class="max-w-4xl mx-auto">
-        <p class="text-[#888888] text-sm uppercase tracking-[0.3em] mb-6">About</p>
+        <p class="text-[#888888] text-sm uppercase tracking-[0.3em] mb-6">{{ 'about.label' | translate }}</p>
         <h1 class="font-display text-6xl font-bold text-[#e8e8e8] mb-12">René Arias</h1>
         
         <div class="grid md:grid-cols-2 gap-16 mb-20">
           <div>
             <p class="text-[#888888] text-lg leading-relaxed mb-6">
-              I'm a software engineer with a decade of experience building scalable systems, 
-              and a music artist who's been making records since my teens.
+              {{ 'about.bio_1' | translate }}
             </p>
             <p class="text-[#888888] text-lg leading-relaxed mb-6">
-              I believe the disciplines are more alike than different — both require deep 
-              focus, iterative refinement, and the willingness to throw away what doesn't work.
+              {{ 'about.bio_2' | translate }}
             </p>
             <p class="text-[#888888] text-lg leading-relaxed">
-              Currently building developer tools by day and recording music by night, 
-              somewhere in between coffee and synthesizers.
+              {{ 'about.bio_3' | translate }}
             </p>
           </div>
           <div class="space-y-8">
             <div>
-              <h3 class="text-[#e8e8e8] font-semibold mb-4 uppercase tracking-wider text-sm">Engineering</h3>
+              <h3 class="text-[#e8e8e8] font-semibold mb-4 uppercase tracking-wider text-sm">{{ 'about.engineering_skills' | translate }}</h3>
               <div class="space-y-2">
                 @for (skill of engineeringSkills; track skill) {
                   <div class="flex items-center gap-3">
@@ -39,7 +37,7 @@ import { RouterLink } from '@angular/router';
               </div>
             </div>
             <div>
-              <h3 class="text-[#e8e8e8] font-semibold mb-4 uppercase tracking-wider text-sm">Music</h3>
+              <h3 class="text-[#e8e8e8] font-semibold mb-4 uppercase tracking-wider text-sm">{{ 'about.music_skills' | translate }}</h3>
               <div class="space-y-2">
                 @for (skill of musicSkills; track skill) {
                   <div class="flex items-center gap-3">
@@ -53,7 +51,7 @@ import { RouterLink } from '@angular/router';
         </div>
 
         <div class="border-t border-[#1f1f1f] pt-16">
-          <h2 class="text-2xl font-bold text-[#e8e8e8] mb-12">Timeline</h2>
+          <h2 class="text-2xl font-bold text-[#e8e8e8] mb-12">{{ 'about.timeline' | translate }}</h2>
           <div class="space-y-8">
             @for (event of timeline; track event.year) {
               <div class="flex gap-8">
@@ -69,7 +67,7 @@ import { RouterLink } from '@angular/router';
 
         <div class="border-t border-[#1f1f1f] pt-12 mt-4">
           <a routerLink="/contact" class="inline-block px-8 py-3 bg-[#d4af37] text-[#0a0a0a] font-bold tracking-widest uppercase hover:bg-[#c9a227] transition-colors text-sm">
-            Get In Touch
+            {{ 'about.get_in_touch' | translate }}
           </a>
         </div>
       </div>

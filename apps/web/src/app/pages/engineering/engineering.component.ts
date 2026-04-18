@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-engineering',
   standalone: true,
-  imports: [],
+  imports: [TranslatePipe],
   template: `
     <div class="pt-24 pb-20 px-6">
       <div class="max-w-6xl mx-auto">
-        <p class="text-[#888888] text-sm uppercase tracking-[0.3em] mb-6">Engineering</p>
-        <h1 class="font-display text-6xl font-bold text-[#e8e8e8] mb-4">Building Things</h1>
-        <p class="text-[#888888] text-xl max-w-2xl mb-16">Scalable systems, open source tools, and the occasional experiment that escapes into production.</p>
+        <p class="text-[#888888] text-sm uppercase tracking-[0.3em] mb-6">{{ 'engineering.label' | translate }}</p>
+        <h1 class="font-display text-6xl font-bold text-[#e8e8e8] mb-4">{{ 'engineering.heading' | translate }}</h1>
+        <p class="text-[#888888] text-xl max-w-2xl mb-16">{{ 'engineering.subheading' | translate }}</p>
 
         <div class="mb-20">
-          <h2 class="text-[#e8e8e8] font-semibold mb-8 uppercase tracking-wider text-sm">Case Studies</h2>
+          <h2 class="text-[#e8e8e8] font-semibold mb-8 uppercase tracking-wider text-sm">{{ 'engineering.case_studies' | translate }}</h2>
           <div class="space-y-6">
             @for (study of caseStudies; track study.title) {
               <div class="border border-[#1f1f1f] p-8 hover:border-[#d4af37]/30 transition-colors">
@@ -26,15 +27,15 @@ import { Component } from '@angular/core';
                 <p class="text-[#888888] mb-4">{{ study.description }}</p>
                 <div class="grid md:grid-cols-3 gap-4 mb-4">
                   <div>
-                    <p class="text-[#888888] text-xs uppercase tracking-wider mb-1">Challenge</p>
+                    <p class="text-[#888888] text-xs uppercase tracking-wider mb-1">{{ 'engineering.challenge' | translate }}</p>
                     <p class="text-[#e8e8e8] text-sm">{{ study.challenge }}</p>
                   </div>
                   <div>
-                    <p class="text-[#888888] text-xs uppercase tracking-wider mb-1">Solution</p>
+                    <p class="text-[#888888] text-xs uppercase tracking-wider mb-1">{{ 'engineering.solution' | translate }}</p>
                     <p class="text-[#e8e8e8] text-sm">{{ study.solution }}</p>
                   </div>
                   <div>
-                    <p class="text-[#888888] text-xs uppercase tracking-wider mb-1">Impact</p>
+                    <p class="text-[#888888] text-xs uppercase tracking-wider mb-1">{{ 'engineering.impact' | translate }}</p>
                     <p class="text-[#e8e8e8] text-sm">{{ study.impact }}</p>
                   </div>
                 </div>
@@ -49,7 +50,7 @@ import { Component } from '@angular/core';
         </div>
 
         <div>
-          <h2 class="text-[#e8e8e8] font-semibold mb-8 uppercase tracking-wider text-sm">Projects</h2>
+          <h2 class="text-[#e8e8e8] font-semibold mb-8 uppercase tracking-wider text-sm">{{ 'engineering.projects' | translate }}</h2>
           <div class="grid md:grid-cols-2 gap-6">
             @for (project of projects; track project.title) {
               <div class="border border-[#1f1f1f] p-6 hover:border-[#d4af37]/30 transition-colors group">

@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-lab',
   standalone: true,
-  imports: [],
+  imports: [TranslatePipe],
   template: `
     <div class="pt-24 pb-20 px-6">
       <div class="max-w-6xl mx-auto">
-        <p class="text-[#888888] text-sm uppercase tracking-[0.3em] mb-6">Lab</p>
-        <h1 class="font-display text-6xl font-bold text-[#e8e8e8] mb-4">Experiments</h1>
-        <p class="text-[#888888] text-xl max-w-2xl mb-16">Side projects, prototypes, and ideas that escaped into the world.</p>
+        <p class="text-[#888888] text-sm uppercase tracking-[0.3em] mb-6">{{ 'lab.label' | translate }}</p>
+        <h1 class="font-display text-6xl font-bold text-[#e8e8e8] mb-4">{{ 'lab.heading' | translate }}</h1>
+        <p class="text-[#888888] text-xl max-w-2xl mb-16">{{ 'lab.subheading' | translate }}</p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           @for (experiment of experiments; track experiment.title) {

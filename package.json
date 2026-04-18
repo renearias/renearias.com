@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:api:firebase": "FIREBASE_BUILD=true npx nx build api",
+    "deploy:api": "npm run build:api:firebase && firebase deploy --only functions",
+    "deploy:api:dry": "npm run build:api:firebase && firebase deploy --only functions --dry-run"
   },
   "repository": {
     "type": "git",
@@ -46,6 +49,7 @@
     "@types/express": "^4.17.21",
     "@types/jest": "^30.0.0",
     "@types/node": "20.19.9",
+    "@types/nodemailer": "^8.0.0",
     "@typescript-eslint/utils": "^8.40.0",
     "angular-eslint": "^21.2.0",
     "autoprefixer": "^10.4.0",
@@ -82,13 +86,19 @@
     "@angular/router": "~21.2.0",
     "@angular/ssr": "~21.2.0",
     "@nestjs/common": "^11.0.0",
+    "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
     "@nestjs/swagger": "^11.3.0",
+    "@ngx-translate/core": "^17.0.0",
+    "@ngx-translate/http-loader": "^17.0.0",
     "axios": "^1.6.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.15.1",
     "express": "^4.21.2",
+    "firebase-admin": "^13.8.0",
+    "firebase-functions": "^7.2.5",
+    "nodemailer": "^8.0.5",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.0"
   }

@@ -1,0 +1,20 @@
+{
+  "functions": {
+    "source": "dist/apps/api",
+    "runtime": "nodejs22",
+    "ignore": [
+      "*.map"
+    ]
+  },
+  "hosting": [
+    {
+      "target": "api",
+      "rewrites": [
+        {
+          "source": "**",
+          "function": "api"
+        }
+      ]
+    }
+  ]
+}
