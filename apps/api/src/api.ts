@@ -6,6 +6,14 @@ import { AppModule } from './app/app.module';
 
 export const server: Express = express();
 
+// @nestjs/platform-express uses the deprecated Express 3.x `app.router` getter
+// which throws in Express 4.x. Override it to return the internal `_router` instead.
+Object.defineProperty(server, 'router', {
+  get: () => (server as any)._router,
+  configurable: true,
+  enumerable: false,
+});
+
 export async function createFunction(expressInstance: Express): Promise<Express> {
   const app = await NestFactory.create(
     AppModule,
