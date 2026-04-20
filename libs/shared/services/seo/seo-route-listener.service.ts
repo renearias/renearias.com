@@ -20,7 +20,11 @@ export class SeoRouteListenerService {
         const seo: SeoConfig | undefined = leaf.snapshot.data['seo'];
         if (seo) {
           const url = this.baseUrl + event.urlAfterRedirects.split('?')[0];
-          this.seoService.update({ ...seo, ogUrl: seo.ogUrl || url });
+          const alternates = (seo.alternates ?? []).map((alt) => ({
+            ...alt,
+            href: alt.href.startsWith('/') ? this.baseUrl + alt.href : alt.href,
+          }));
+          this.seoService.update({ ...seo, ogUrl: seo.ogUrl || url, alternates });
         }
       });
   }
