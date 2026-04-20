@@ -3,12 +3,14 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 import { SeoConfig } from './seo-config.interface';
 import { SeoService } from './seo.service';
+import { SEO_BASE_URL } from './seo.tokens';
 
 @Injectable({ providedIn: 'root' })
 export class SeoRouteListenerService {
   private readonly router = inject(Router);
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly seoService = inject(SeoService);
+  private readonly baseUrl = inject(SEO_BASE_URL);
 
   init(): void {
     this.router.events
@@ -17,7 +19,7 @@ export class SeoRouteListenerService {
         const leaf = this.getLeafRoute(this.activatedRoute);
         const seo: SeoConfig | undefined = leaf.snapshot.data['seo'];
         if (seo) {
-          const url = 'https://renearias.com' + event.urlAfterRedirects.split('?')[0];
+          const url = this.baseUrl + event.urlAfterRedirects.split('?')[0];
           this.seoService.update({ ...seo, ogUrl: seo.ogUrl || url });
         }
       });

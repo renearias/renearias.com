@@ -2,14 +2,21 @@ import { DOCUMENT } from '@angular/common';
 import { inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { SeoConfig } from './seo-config.interface';
+import { SEO_BASE_URL } from './seo.tokens';
 
-const DEFAULT_OG_IMAGE = 'https://renearias.com/images/og-renearias.png';
+const DEFAULT_OG_IMAGE_PATH = '/images/rene-arias-logo.png';
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
   private readonly titleService = inject(Title);
   private readonly metaService = inject(Meta);
   private readonly document = inject(DOCUMENT);
+  private readonly baseUrl = inject(SEO_BASE_URL);
+
+  private resolveUrl(path: string): string {
+    if (!path) return path;
+    return path.startsWith('/') ? this.baseUrl + path : path;
+  }
 
   update(config: SeoConfig): void {
     const {
@@ -17,7 +24,7 @@ export class SeoService {
       description,
       ogTitle = title,
       ogDescription = description,
-      ogImage = DEFAULT_OG_IMAGE,
+      ogImage = DEFAULT_OG_IMAGE_PATH,
       ogUrl,
       twitterTitle = ogTitle,
       twitterDescription = ogDescription,
@@ -45,7 +52,7 @@ export class SeoService {
         content: ogDescription,
       });
     }
-    this.metaService.updateTag({ property: 'og:image', content: ogImage });
+    this.metaService.updateTag({ property: 'og:image', content: this.resolveUrl(ogImage) });
     if (ogUrl) {
       this.metaService.updateTag({ property: 'og:url', content: ogUrl });
       this.updateCanonicalUrl(ogUrl);
@@ -59,7 +66,7 @@ export class SeoService {
         content: twitterDescription,
       });
     }
-    this.metaService.updateTag({ name: 'twitter:image', content: twitterImage });
+    this.metaService.updateTag({ name: 'twitter:image', content: this.resolveUrl(twitterImage) });
     this.updateHreflangLinks(config.alternates ?? []);
   }
 
