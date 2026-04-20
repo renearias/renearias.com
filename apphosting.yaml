@@ -8,3 +8,5 @@ env:
       - BUILD
   - variable: API_URL
     secret: API_URL
+    availability:
+      - RUNTIME
