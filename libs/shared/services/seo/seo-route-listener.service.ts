@@ -17,7 +17,7 @@ export class SeoRouteListenerService {
         const leaf = this.getLeafRoute(this.activatedRoute);
         const seo: SeoConfig | undefined = leaf.snapshot.data['seo'];
         if (seo) {
-          const url = 'https://alaz.pe' + event.urlAfterRedirects.split('?')[0];
+          const url = 'https://renearias.com' + event.urlAfterRedirects.split('?')[0];
           this.seoService.update({ ...seo, ogUrl: seo.ogUrl || url });
         }
       });

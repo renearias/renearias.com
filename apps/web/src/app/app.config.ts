@@ -19,6 +19,7 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { I18nService } from 'i18n';
 import { provideApi, API_ENDPOINT_CONFIG } from '@arxis/api';
 import { makeStateKey, TransferState } from '@angular/core';
+import { SeoRouteListenerService } from 'seo';
 
 const API_URL_STATE_KEY = makeStateKey<string>('apiUrl');
 
@@ -47,6 +48,9 @@ export const appConfig: ApplicationConfig = {
         : undefined;
       const locale = i18n.detectLocale(undefined, undefined, navigatorLang);
       return i18n.use(locale, 'app.title');
+    }),
+    provideAppInitializer(() => {
+      inject(SeoRouteListenerService).init();
     }),
   ],
 };

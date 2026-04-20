@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { SeoConfig } from './seo-config.interface';
 
-const DEFAULT_OG_IMAGE = 'https://alaz.pe/assets/img/alaz-seo.png';
+const DEFAULT_OG_IMAGE = 'https://renearias.com/images/og-renearias.png';
 
 @Injectable({ providedIn: 'root' })
 export class SeoService {
