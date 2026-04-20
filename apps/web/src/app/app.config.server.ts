@@ -1,16 +1,23 @@
-import { mergeApplicationConfig, ApplicationConfig } from '@angular/core';
+import { mergeApplicationConfig, ApplicationConfig, makeStateKey, TransferState } from '@angular/core';
 import { provideServerRendering, withRoutes } from '@angular/ssr';
 import { appConfig } from './app.config';
 import { serverRoutes } from './app.routes.server';
 import { API_ENDPOINT_CONFIG } from '@arxis/api';
 import { environment } from '../environments/environment';
 
+export const API_URL_STATE_KEY = makeStateKey<string>('apiUrl');
+
 const serverConfig: ApplicationConfig = {
   providers: [
     provideServerRendering(withRoutes(serverRoutes)),
     {
       provide: API_ENDPOINT_CONFIG,
-      useValue: { url: process.env['API_URL'] || environment.apiUrl },
+      useFactory: (transferState: TransferState) => {
+        const url = process.env['API_URL'] || environment.apiUrl;
+        transferState.set(API_URL_STATE_KEY, url);
+        return { url };
+      },
+      deps: [TransferState],
     },
   ],
 };
