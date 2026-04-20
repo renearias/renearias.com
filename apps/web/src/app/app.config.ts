@@ -17,6 +17,8 @@ import { importProvidersFrom } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { I18nService } from '../../../../libs/shared/services/i18n/i18n.service';
+import { provideApi } from '@arxis/api';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,6 +26,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(appRoutes, withViewTransitions()),
     provideHttpClient(withFetch()),
+    ...provideApi({ url: environment.apiUrl }),
     importProvidersFrom(TranslateModule.forRoot()),
     ...provideTranslateHttpLoader({ prefix: '/i18n/', suffix: '.json' }),
     provideAppInitializer(() => {
