@@ -19,9 +19,10 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { I18nService } from 'i18n';
 import { provideApi, API_ENDPOINT_CONFIG } from '@arxis/api';
 import { makeStateKey, TransferState } from '@angular/core';
-import { SeoRouteListenerService } from 'seo';
+import { SeoRouteListenerService, SEO_BASE_URL, SEO_BASE_URL_STATE_KEY_NAME } from 'seo';
 
 const API_URL_STATE_KEY = makeStateKey<string>('apiUrl');
+const SEO_BASE_URL_STATE_KEY = makeStateKey<string>(SEO_BASE_URL_STATE_KEY_NAME);
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -52,5 +53,11 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(() => {
       inject(SeoRouteListenerService).init();
     }),
+    {
+      provide: SEO_BASE_URL,
+      useFactory: (transferState: TransferState) =>
+        transferState.get(SEO_BASE_URL_STATE_KEY, 'https://renearias.com'),
+      deps: [TransferState],
+    },
   ],
 };
