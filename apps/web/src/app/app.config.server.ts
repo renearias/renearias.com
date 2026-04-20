@@ -3,7 +3,6 @@ import { provideServerRendering, withRoutes } from '@angular/ssr';
 import { appConfig } from './app.config';
 import { serverRoutes } from './app.routes.server';
 import { API_ENDPOINT_CONFIG } from '@arxis/api';
-import { environment } from '../environments/environment';
 
 export const API_URL_STATE_KEY = makeStateKey<string>('apiUrl');
 
@@ -13,7 +12,7 @@ const serverConfig: ApplicationConfig = {
     {
       provide: API_ENDPOINT_CONFIG,
       useFactory: (transferState: TransferState) => {
-        const url = process.env['API_URL'] || environment.apiUrl;
+        const url = process.env['API_URL'];
         transferState.set(API_URL_STATE_KEY, url);
         return { url };
       },

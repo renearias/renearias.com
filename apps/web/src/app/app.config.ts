@@ -19,7 +19,6 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { I18nService } from 'i18n';
 import { provideApi, API_ENDPOINT_CONFIG } from '@arxis/api';
 import { makeStateKey, TransferState } from '@angular/core';
-import { environment } from '../environments/environment';
 
 const API_URL_STATE_KEY = makeStateKey<string>('apiUrl');
 
@@ -29,11 +28,11 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(appRoutes, withViewTransitions()),
     provideHttpClient(withFetch()),
-    ...provideApi({ url: environment.apiUrl }),
+    ...provideApi({ url: '' }),
     {
       provide: API_ENDPOINT_CONFIG,
       useFactory: (transferState: TransferState) => {
-        const url = transferState.get(API_URL_STATE_KEY, environment.apiUrl);
+        const url = transferState.get(API_URL_STATE_KEY, '');
         return { url };
       },
       deps: [TransferState],
