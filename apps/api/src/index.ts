@@ -24,6 +24,7 @@ export const api = onRequest(
     invoker: 'public',
     memory: '1GiB',
     preserveExternalChanges: true,
+    secrets: ['SMTP_HOST', 'SMTP_PORT', 'SMTP_SECURE', 'SMTP_USER', 'SMTP_PASS', 'SMTP_FROM', 'CONTACT_EMAIL'],
   },
   async (request, response) => {
     const handler = await getServer();

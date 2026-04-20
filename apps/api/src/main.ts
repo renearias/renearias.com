@@ -28,9 +28,18 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document);
 
   const port = process.env['PORT'] || 3000;
-  await app.listen(port);
-  console.log(`API running on port ${port}`);
+  try {
+    await app.listen(port);
+    console.log(`API running on port ${port}`);
+  } catch (err: any) {
+    if (err?.code === 'EADDRINUSE') {
+      console.warn(`Port ${port} in use — skipping listen (likely Firebase CLI analysis)`);
+      return;
+    }
+    throw err;
+  }
 }
 
 bootstrap();
+}
 

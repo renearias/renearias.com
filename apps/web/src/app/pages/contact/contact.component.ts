@@ -1,7 +1,7 @@
 import { Component, signal, inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { TranslatePipe } from '@ngx-translate/core';
+import { ContactService } from './contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -106,7 +106,7 @@ export class ContactComponent {
   errorMessage = signal<string | null>(null);
 
   private fb = inject(FormBuilder);
-  private http = inject(HttpClient);
+  private contactService = inject(ContactService);
 
   form: FormGroup = this.fb.group({
     name: ['', Validators.required],
@@ -124,7 +124,7 @@ export class ContactComponent {
     this.sending.set(true);
     this.errorMessage.set(null);
 
-    this.http.post('/api/contact', this.form.value).subscribe({
+    this.contactService.send(this.form.value).subscribe({
       next: () => {
         this.submitted.set(true);
         this.sending.set(false);

@@ -2,6 +2,7 @@
   "functions": {
     "source": "dist/apps/api",
     "runtime": "nodejs22",
+    "predeploy": ["npm run build:api:firebase"],
     "ignore": [
       "*.map",
       "node_modules"

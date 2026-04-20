@@ -27,7 +27,7 @@ export class ContactService {
   }
 
   async create(dto: CreateContactDto) {
-    const to = this.config.get<string>('CONTACT_EMAIL', 'hello@renearias.com');
+    const to = this.config.get<string>('CONTACT_EMAIL');
     const from = this.config.get<string>('SMTP_FROM', `"René Arias Website" <${this.config.get('SMTP_USER')}>`);
 
     try {
