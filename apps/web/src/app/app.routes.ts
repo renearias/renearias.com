@@ -1,8 +1,7 @@
 import { Route } from '@angular/router';
 import { SeoConfig } from 'seo';
 
-const BASE_URL = 'https://renearias.com';
-const OG_IMAGE = `${BASE_URL}/images/og-renearias.png`;
+const OG_IMAGE = '/images/rene-arias-logo.png';
 
 export const appRoutes: Route[] = [
   {
