@@ -11,6 +11,8 @@ import { fileURLToPath } from 'node:url';
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
+const API_URL = process.env['API_URL'] || 'http://localhost:3000';
+
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
@@ -42,7 +44,7 @@ app.use(
  */
 app.use('/**', (req, res, next) => {
   angularApp
-    .handle(req)
+    .handle(req, { apiUrl: API_URL })
     .then((response) =>
       response ? writeResponseToNodeResponse(response, res) : next(),
     )

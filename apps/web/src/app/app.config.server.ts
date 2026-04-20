@@ -12,7 +12,7 @@ const serverConfig: ApplicationConfig = {
     {
       provide: API_ENDPOINT_CONFIG,
       useFactory: (transferState: TransferState) => {
-        const url = process.env['API_URL'];
+        const url = process.env['API_URL'] ?? '';
         transferState.set(API_URL_STATE_KEY, url);
         return { url };
       },
