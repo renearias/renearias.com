@@ -39,6 +39,9 @@
               "with": "apps/web/src/environments/environment.prod.ts"
             }
           ],
+          "define": {
+            "NG_APP_API_URL": "process.env.NG_APP_API_URL || ''"
+          },
           "budgets": [
             {
               "type": "initial",
