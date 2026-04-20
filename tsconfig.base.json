@@ -23,7 +23,8 @@
       "home": ["libs/features/home/src/index.ts"],
       "engineering": ["libs/features/engineering/src/index.ts"],
       "music": ["libs/features/music/src/index.ts"],
-      "writing": ["libs/features/writing/src/index.ts"]
+      "writing": ["libs/features/writing/src/index.ts"],
+      "i18n": ["libs/shared/services/i18n/i18n.service.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

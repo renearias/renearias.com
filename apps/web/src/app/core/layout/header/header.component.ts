@@ -3,7 +3,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { NgClass } from '@angular/common';
 import { TranslatePipe } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { I18nService, SupportedLocale } from '../../../../../../../libs/shared/services/i18n/i18n.service';
+import { I18nService, SupportedLocale } from 'i18n';
 
 @Component({
   selector: 'app-header',

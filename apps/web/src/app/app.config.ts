@@ -16,7 +16,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { importProvidersFrom } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
-import { I18nService } from '../../../../libs/shared/services/i18n/i18n.service';
+import { I18nService } from 'i18n';
 import { provideApi, API_ENDPOINT_CONFIG } from '@arxis/api';
 import { makeStateKey, TransferState } from '@angular/core';
 import { environment } from '../environments/environment';
