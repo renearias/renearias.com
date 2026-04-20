@@ -105,17 +105,17 @@ export class EngineeringComponent {
 
   projects = [
     {
-      title: 'Nx Monorepo Starter',
-      description: 'Production-ready Angular + NestJS monorepo template with SSR, testing, and CI/CD baked in.',
-      technologies: ['Angular', 'NestJS', 'Nx', 'TypeScript', 'Jest'],
-      repoUrl: 'https://github.com/renearias/nx-starter',
-      demoUrl: null,
+      title: 'renearias.com',
+      description: 'Source code for this site — Angular SSR frontend, NestJS API, and Nx monorepo deployed on Firebase.',
+      technologies: ['Angular', 'NestJS', 'Nx', 'TypeScript', 'Firebase'],
+      repoUrl: 'https://github.com/renearias/renearias.com',
+      demoUrl: 'https://renearias.com',
     },
     {
-      title: 'Real-time Collaboration Engine',
-      description: 'WebSocket-based system for real-time document collaboration with CRDT conflict resolution.',
-      technologies: ['Node.js', 'Redis', 'WebSockets', 'CRDT'],
-      repoUrl: 'https://github.com/renearias/collab-engine',
+      title: 'Arxis',
+      description: 'Angular utilities for Firebase authentication and Firestore — auth facades, typed helpers, and RxJS integration.',
+      technologies: ['Angular', 'Firebase', 'TypeScript', 'RxJS'],
+      repoUrl: 'https://github.com/renearias/arxis',
       demoUrl: null,
     },
     {

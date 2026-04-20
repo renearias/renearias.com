@@ -138,11 +138,17 @@ import { TranslatePipe } from '@ngx-translate/core';
               <div class="text-[#d4af37] text-xs uppercase tracking-widest mb-4">{{ project.status }}</div>
               <h3 class="text-[#e8e8e8] font-semibold text-lg mb-3 group-hover:text-[#d4af37] transition-colors">{{ project.title }}</h3>
               <p class="text-[#888888] text-sm leading-relaxed mb-4">{{ project.description }}</p>
-              <div class="flex flex-wrap gap-2">
+              <div class="flex flex-wrap gap-2 mb-5">
                 @for (tech of project.technologies; track tech) {
                   <span class="text-xs text-[#888888] border border-[#1f1f1f] px-2 py-1">{{ tech }}</span>
                 }
               </div>
+              @if (project.repoUrl) {
+                <a [href]="project.repoUrl" target="_blank" rel="noopener noreferrer"
+                   class="text-xs text-[#888888] hover:text-[#d4af37] transition-colors uppercase tracking-widest">
+                  GitHub →
+                </a>
+              }
             </div>
           }
         </div>
@@ -219,15 +225,17 @@ export class HomeComponent {
   featuredProjects = [
     {
       status: 'Open Source',
-      title: 'Nx Monorepo Starter',
-      description: 'Production-ready Angular + NestJS monorepo template with SSR, testing, and CI/CD.',
-      technologies: ['Angular', 'NestJS', 'Nx', 'TypeScript'],
+      title: 'renearias.com',
+      description: 'Source code for this site — Angular SSR frontend, NestJS API, and Nx monorepo deployed on Firebase.',
+      technologies: ['Angular', 'NestJS', 'Nx', 'TypeScript', 'Firebase'],
+      repoUrl: 'https://github.com/renearias/renearias.com',
     },
     {
-      status: 'Production',
-      title: 'Real-time Collaboration Engine',
-      description: 'WebSocket-based collaboration system handling 10k+ concurrent users with CRDT conflict resolution.',
-      technologies: ['Node.js', 'Redis', 'WebSockets', 'PostgreSQL'],
+      status: 'Open Source',
+      title: 'Arxis',
+      description: 'Angular utilities for Firebase authentication and Firestore — auth facades, typed helpers, and RxJS integration.',
+      technologies: ['Angular', 'Firebase', 'TypeScript', 'RxJS'],
+      repoUrl: 'https://github.com/renearias/arxis',
     },
     {
       status: 'Side Project',
