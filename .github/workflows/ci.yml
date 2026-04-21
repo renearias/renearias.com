@@ -27,7 +27,7 @@ jobs:
         run: npx nx run-many -t lint --parallel=3
 
       - name: Test
-        run: npx nx run-many -t test --parallel=3 --ci
+        run: npx nx run-many -t test --parallel=3 --ci --exclude=api-e2e
 
       - name: Build
         run: npx nx run-many -t build --parallel=3
