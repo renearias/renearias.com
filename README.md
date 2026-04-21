@@ -62,3 +62,11 @@ npx nx run-many -t build
 - [Content Model](docs/CONTENT_MODEL.md)
 - [Contributing](docs/CONTRIBUTING.md)
 - [Roadmap](docs/ROADMAP.md)
+
+## License
+
+[ISC](LICENSE) © 2026 René Arias
+
+---
+
+[🇪🇸 Leer en español](README.es.md)
