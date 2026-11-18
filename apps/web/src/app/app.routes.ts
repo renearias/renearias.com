@@ -6,6 +6,21 @@ const BASE_URL = 'https://renearias.com';
 
 export const appRoutes: Route[] = [
   {
+    path: 'cumpleanos/2026',
+    loadComponent: () => import('./pages/birthday/birthday.component').then(m => m.BirthdayComponent),
+    data: {
+      seo: {
+        title: 'Una noche para celebrar — Cumpleaños de René Arias',
+        description: 'Te invito a celebrar mi cumpleaños este sábado 21 de noviembre a las 8:00 p. m. en Sopranos San Miguel, Av. de la Marina 1685, Lima.',
+        ogTitle: 'René te invita a celebrar ✦ Sábado 21 de noviembre',
+        ogDescription: '8:00 p. m. · Sopranos San Miguel · Av. de la Marina 1685. Nos vemos para celebrar juntos.',
+        ogImage: '/images/rene-arias-banner.jpg',
+        ogUrl: `${BASE_URL}/cumpleanos/2026`,
+        index: false,
+      } satisfies SeoConfig,
+    },
+  },
+  {
     path: '',
     loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
     data: {

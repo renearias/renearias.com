@@ -1,0 +1,82 @@
+import { Component, signal } from '@angular/core';
+
+@Component({
+  selector: 'app-birthday',
+  standalone: true,
+  styleUrl: './birthday.component.css',
+  template: `
+    <div class="invitation">
+      <div class="grain" aria-hidden="true"></div>
+      <header class="invite-header">
+        <a href="/" class="brand" aria-label="Ir al inicio de René Arias">RENÉ <span>ARIAS</span></a>
+        <span class="header-note">UNA INVITACIÓN PERSONAL <span class="star">✦</span> 2026</span>
+      </header>
+
+      <main>
+        <section class="hero" aria-labelledby="invite-title">
+          <div class="hero-photo" aria-hidden="true"></div>
+          <div class="hero-shade" aria-hidden="true"></div>
+          <div class="hero-content">
+            <div class="eyebrow"><span class="line"></span> TIENES UNA INVITACIÓN <span class="line"></span></div>
+            <p class="pretitle">Hay noches que merecen celebrarse.</p>
+            <h1 id="invite-title">Una noche<br><em>para recordar.</em></h1>
+            <p class="hero-copy">Este sábado celebro mi cumpleaños y me encantaría que estés ahí.<br class="desktop-only"> Buena música, brindis y las personas que hacen especial cada año.</p>
+            <a class="primary-cta" href="#detalles">DESCUBRE LOS DETALLES <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-bottom"><span>RENÉ ARIAS · CUMPLEAÑOS 2026</span><span>LIMA, PERÚ</span></div>
+        </section>
+
+        <section class="details" id="detalles" aria-labelledby="details-title">
+          <div class="section-kicker">✦ &nbsp; EL ENCUENTRO &nbsp; ✦</div>
+          <h2 id="details-title">Nos vemos <em>allí.</em></h2>
+          <div class="details-grid">
+            <div class="detail"><span class="detail-label">CUÁNDO</span><strong>Sábado <span class="accent">21</span></strong><p>de noviembre de 2026</p></div>
+            <div class="detail"><span class="detail-label">A QUÉ HORA</span><strong>8:00 <span class="accent">p. m.</span></strong><p>La noche apenas comienza</p></div>
+            <div class="detail"><span class="detail-label">DÓNDE</span><strong>Sopranos</strong><p>San Miguel · Lima</p></div>
+          </div>
+          <p class="personal-note">“El mejor regalo es compartir esta noche contigo.”</p>
+        </section>
+
+        <section class="location" aria-labelledby="location-title">
+          <div class="location-copy">
+            <div class="section-kicker">EL LUGAR</div>
+            <h2 id="location-title">El punto<br>de <em>encuentro.</em></h2>
+            <p class="venue">SOPRANOS SAN MIGUEL</p>
+            <address>Av. de la Marina 1685<br>San Miguel, Lima, Perú</address>
+            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sopranos%20Av.%20de%20la%20Marina%201685%20San%20Miguel%20Lima" target="_blank" rel="noopener noreferrer">CÓMO LLEGAR <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="map-wrap">
+            <iframe title="Mapa de Sopranos San Miguel, Av. de la Marina 1685" src="https://maps.google.com/maps?q=Sopranos%20Av.%20de%20la%20Marina%201685%20San%20Miguel%20Lima&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </section>
+
+        <section class="closing">
+          <span class="closing-symbol" aria-hidden="true">✦</span>
+          <p>UNA NOCHE. BUENA COMPAÑÍA. MUCHAS HISTORIAS.</p>
+          <h2>Te espero.</h2>
+          <button type="button" (click)="share()" class="share-button">{{ copied() ? 'ENLACE COPIADO ✓' : 'COMPARTIR INVITACIÓN ↗' }}</button>
+          <span class="signature">René</span>
+        </section>
+      </main>
+      <footer class="invite-footer"><span>RENÉ ARIAS © 2026</span><span>HECHO PARA CELEBRAR JUNTOS</span></footer>
+    </div>
+  `,
+})
+export class BirthdayComponent {
+  readonly copied = signal(false);
+
+  async share(): Promise<void> {
+    const url = 'https://renearias.com/cumpleanos/2026';
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: 'Cumpleaños de René Arias', text: 'Te espero el sábado 21 de noviembre a las 8:00 p. m. en Sopranos San Miguel.', url });
+      } catch { /* The visitor can dismiss the native share sheet. */ }
+    } else if (navigator.clipboard) {
+      try {
+        await navigator.clipboard.writeText(url);
+        this.copied.set(true);
+        setTimeout(() => this.copied.set(false), 3000);
+      } catch { /* Clipboard permissions depend on the browser. */ }
+    }
+  }
+}

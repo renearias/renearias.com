@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { filter } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { HeaderComponent } from './core/layout/header/header.component';
 import { FooterComponent } from './core/layout/footer/footer.component';
 
@@ -7,13 +9,19 @@ import { FooterComponent } from './core/layout/footer/footer.component';
   imports: [RouterModule, HeaderComponent, FooterComponent],
   selector: 'app-root',
   template: `
-    <app-header />
+    @if (!isInvitation()) { <app-header /> }
     <main class="min-h-screen">
       <router-outlet />
     </main>
-    <app-footer />
+    @if (!isInvitation()) { <app-footer /> }
   `,
 })
 export class App {
-  protected title = 'web';
+  private readonly router = inject(Router);
+  readonly isInvitation = signal(this.router.url.startsWith('/cumpleanos/'));
+
+  constructor() {
+    this.router.events.pipe(filter((event) => event instanceof NavigationEnd), takeUntilDestroyed())
+      .subscribe((event) => this.isInvitation.set(event.urlAfterRedirects.split('?')[0].startsWith('/cumpleanos/')));
+  }
 }
