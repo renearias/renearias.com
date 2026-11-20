@@ -43,7 +43,7 @@ import { Component, signal } from '@angular/core';
             <h2 id="location-title">El punto<br>de <em>encuentro.</em></h2>
             <p class="venue">SOPRANOS SAN MIGUEL</p>
             <address>Av. de la Marina 1685<br>San Miguel, Lima, Perú</address>
-            <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Sopranos%20Av.%20de%20la%20Marina%201685%20San%20Miguel%20Lima" target="_blank" rel="noopener noreferrer">CÓMO LLEGAR <span aria-hidden="true">↗</span></a>
+            <a class="map-link" [href]="mapsUrl" target="_blank" rel="noopener noreferrer">CÓMO LLEGAR <span aria-hidden="true">↗</span></a>
           </div>
           <div class="map-wrap">
             <iframe title="Mapa de Sopranos San Miguel, Av. de la Marina 1685" src="https://maps.google.com/maps?q=Sopranos%20Av.%20de%20la%20Marina%201685%20San%20Miguel%20Lima&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
@@ -54,7 +54,7 @@ import { Component, signal } from '@angular/core';
           <span class="closing-symbol" aria-hidden="true">✦</span>
           <p>UNA NOCHE. BUENA COMPAÑÍA. MUCHAS HISTORIAS.</p>
           <h2>Te espero.</h2>
-          <button type="button" (click)="share()" class="share-button">{{ copied() ? 'ENLACE COPIADO ✓' : 'COMPARTIR INVITACIÓN ↗' }}</button>
+          <button type="button" (click)="share()" class="share-button">{{ copied() ? 'INVITACIÓN COPIADA ✓' : 'COMPARTIR INVITACIÓN ↗' }}</button>
           <span class="signature">René</span>
         </section>
       </div>
@@ -63,17 +63,39 @@ import { Component, signal } from '@angular/core';
   `,
 })
 export class BirthdayComponent {
+  readonly mapsUrl = 'https://www.google.com/maps/search/?api=1&query=Sopranos%20Av.%20de%20la%20Marina%201685%20San%20Miguel%20Lima';
   readonly copied = signal(false);
 
   async share(): Promise<void> {
-    const url = 'https://renearias.com/cumpleanos/2026';
+    const title = 'Cumpleaños de René Arias';
+    const message = [
+      '¡Te invito a celebrar mi cumpleaños!',
+      '',
+      '📅 Sábado 21 de noviembre de 2026',
+      '🕗 8:00 p. m. (hora de Lima)',
+      '📍 Sopranos San Miguel',
+      'Av. de la Marina 1685, San Miguel, Lima, Perú',
+      '',
+      `Google Maps: ${this.mapsUrl}`,
+      'Invitación: https://renearias.com/cumpleanos/2026',
+      '',
+      '¡Te espero! — René',
+    ].join('\n');
+
     if (navigator.share) {
       try {
-        await navigator.share({ title: 'Cumpleaños de René Arias', text: 'Te espero el sábado 21 de noviembre a las 8:00 p. m. en Sopranos San Miguel.', url });
-      } catch { /* The visitor can dismiss the native share sheet. */ }
-    } else if (navigator.clipboard) {
+        await navigator.share({ title, text: message });
+        return;
+      } catch (error) {
+        if (error instanceof DOMException && error.name === 'AbortError') {
+          return;
+        }
+      }
+    }
+
+    if (navigator.clipboard) {
       try {
-        await navigator.clipboard.writeText(url);
+        await navigator.clipboard.writeText(message);
         this.copied.set(true);
         setTimeout(() => this.copied.set(false), 3000);
       } catch { /* Clipboard permissions depend on the browser. */ }
