@@ -39,6 +39,17 @@ app.use(
   }),
 );
 
+// Serve the prerendered invitation so link previews get its metadata without JavaScript.
+app.get('/cumpleanos/2026', (_req, res, next) => {
+  res.sendFile('cumpleanos/2026/index.html', { root: browserDistFolder }, (error) => {
+    if (error && 'code' in error && error.code === 'ENOENT') {
+      next();
+    } else if (error) {
+      next(error);
+    }
+  });
+});
+
 /**
  * Handle all other requests by rendering the Angular application.
  */

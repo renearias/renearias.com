@@ -12,9 +12,9 @@ export const appRoutes: Route[] = [
       seo: {
         title: 'Una noche para celebrar — Cumpleaños de René Arias',
         description: 'Te invito a celebrar mi cumpleaños este sábado 21 de noviembre a las 8:00 p. m. en Sopranos San Miguel, Av. de la Marina 1685, Lima.',
-        ogTitle: 'René te invita a celebrar ✦ Sábado 21 de noviembre',
-        ogDescription: '8:00 p. m. · Sopranos San Miguel · Av. de la Marina 1685. Nos vemos para celebrar juntos.',
-        ogImage: '/images/rene-arias-banner.jpg',
+        ogTitle: 'Cumpleaños de René Arias | Sábado 21 de noviembre',
+        ogDescription: 'Sábado 21 de noviembre de 2026, 8:00 p. m. · Sopranos San Miguel, Av. de la Marina 1685, Lima. Abre la invitación para ver el mapa.',
+        ogImage: '/images/cumpleanos-rene-arias-2026-og.jpg',
         ogUrl: `${BASE_URL}/cumpleanos/2026`,
         index: false,
       } satisfies SeoConfig,
