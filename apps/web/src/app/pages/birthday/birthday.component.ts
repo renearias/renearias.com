@@ -5,14 +5,14 @@ import { Component, signal } from '@angular/core';
   standalone: true,
   styleUrl: './birthday.component.css',
   template: `
-    <div class="invitation">
+    <div class="invitation" lang="es">
       <div class="grain" aria-hidden="true"></div>
       <header class="invite-header">
-        <a href="/" class="brand" aria-label="Ir al inicio de René Arias">RENÉ <span>ARIAS</span></a>
+        <span class="brand">RENÉ <span>ARIAS</span></span>
         <span class="header-note">UNA INVITACIÓN PERSONAL <span class="star">✦</span> 2026</span>
       </header>
 
-      <main>
+      <div>
         <section class="hero" aria-labelledby="invite-title">
           <div class="hero-photo" aria-hidden="true"></div>
           <div class="hero-shade" aria-hidden="true"></div>
@@ -21,7 +21,7 @@ import { Component, signal } from '@angular/core';
             <p class="pretitle">Hay noches que merecen celebrarse.</p>
             <h1 id="invite-title">Una noche<br><em>para recordar.</em></h1>
             <p class="hero-copy">Este sábado celebro mi cumpleaños y me encantaría que estés ahí.<br class="desktop-only"> Buena música, brindis y las personas que hacen especial cada año.</p>
-            <a class="primary-cta" href="#detalles">DESCUBRE LOS DETALLES <span aria-hidden="true">↓</span></a>
+            <a class="primary-cta" href="/cumpleanos/2026#detalles">DESCUBRE LOS DETALLES <span aria-hidden="true">↓</span></a>
           </div>
           <div class="hero-bottom"><span>RENÉ ARIAS · CUMPLEAÑOS 2026</span><span>LIMA, PERÚ</span></div>
         </section>
@@ -57,7 +57,7 @@ import { Component, signal } from '@angular/core';
           <button type="button" (click)="share()" class="share-button">{{ copied() ? 'ENLACE COPIADO ✓' : 'COMPARTIR INVITACIÓN ↗' }}</button>
           <span class="signature">René</span>
         </section>
-      </main>
+      </div>
       <footer class="invite-footer"><span>RENÉ ARIAS © 2026</span><span>HECHO PARA CELEBRAR JUNTOS</span></footer>
     </div>
   `,
